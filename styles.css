@@ -1,0 +1,133 @@
+:root {
+  --main-bg: #000000;
+  --deep-blue: #019499;
+  --light-blue: #4dd0e1;
+  --aqua-green: #80cbc4;
+  --sand: #fff8e1;
+  --text-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--deep-blue);
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+main {
+  margin-top: 100px;
+  padding: 2rem;
+}
+
+footer {
+  background-color: var(--sand);
+  text-align: center;
+  padding: 1rem;
+  color: #00363a;
+}
+
+
+button {
+  background-color: var(--light-blue);
+  border: none;
+  padding: 10px 20px;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+body {
+  background: url('bg-ocean.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: lighten;
+}
+
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.nav-btn {
+  background-color: var(--light-blue);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--aqua-green);
+}
+
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.nav-btn {
+  background-color: #ffffffcc; 
+  color: var(--deep-blue);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-btn:hover {
+  background-color: var(--aqua-green);
+  color: white;
+}
+
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}

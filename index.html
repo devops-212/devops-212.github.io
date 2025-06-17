@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoDive - Limpieza Submarina</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("fade-in");
+  });
+
+  const links = document.querySelectorAll("a.nav-btn");
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      document.body.classList.remove("fade-in");
+      setTimeout(() => {
+        window.location.href = href;
+      }, 300);
+    });
+  });
+</script>
+
+<body>
+  <header>
+  <h1>EcoDive</h1>
+  <nav class="navbar">
+    <a href="index.html" class="nav-btn"><span>&#8962;</span> Inicio</a>
+    <a href="about.html" class="nav-btn"><span>&#8505;</span> Acerca</a>
+    <a href="contact.html" class="nav-btn"><span>&#9993;</span> Contacto</a>
+  </nav>
+</header>
+
+
+  <main>
+    <section id="sobre">
+      <h2>Una aventura ecológica</h2>
+      <p>Sumérgete en las profundidades del océano y ayuda a limpiar la basura recolectando residuos mientras exploras el mundo submarino.</p>
+    </section>
+    <section id="como-jugar">
+      <h2>¿Cómo se juega?</h2>
+      <ul>
+        <li>Controla al buzo con las teclas de flecha.</li>
+        <li>Recolecta basura y evita los obstáculos.</li>
+        <li>Gana puntos por cada residuo recolectado.</li>
+      </ul>
+      <button onclick="startGame()">¡Comenzar juego!</button>
+    </section>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Para más información, escribe a contacto@ecodive.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceWorker.js')
+        .then(function(registration) {
+          console.log('ServiceWorker registrado con éxito:', registration);
+        }).catch(function(error) {
+          console.log('Fallo al registrar el ServiceWorker:', error);
+        });
+    }
+  </script>
+</body>
+
+</html>

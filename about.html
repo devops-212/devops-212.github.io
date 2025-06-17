@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre EcoDive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("fade-in");
+  });
+
+  const links = document.querySelectorAll("a.nav-btn");
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      document.body.classList.remove("fade-in");
+      setTimeout(() => {
+        window.location.href = href;
+      }, 300);
+    });
+  });
+</script>
+
+<body>
+  <header>
+  <h1>EcoDive</h1>
+  <nav class="navbar">
+    <a href="index.html" class="nav-btn">&#8962; Inicio</a>
+    <a href="about.html" class="nav-btn">&#8505; Acerca</a>
+    <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
+  </nav>
+</header>
+
+  <main>
+    <section>
+      <p><strong>EcoDive</strong> es una iniciativa de concientización ambiental a través de un videojuego accesible para todos. Fue diseñado para promover la importancia del reciclaje y la limpieza de los océanos de manera divertida.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
+  </footer>
+</body>
+</html>
