@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoDive App Shell</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#006064">
+  <title>EcoDive - AppShell</title>
   <link rel="manifest" href="Manifest.json">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="fade-in">
   <header>
     <h1>EcoDive</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="about.html">Sobre EcoDive</a>
-      <a href="contact.html">Contacto</a>
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn">&#8962; Inicio</a>
+      <a href="about.html" class="nav-btn">&#8505; Acerca</a>
+      <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
     </nav>
   </header>
 
   <main>
-    <p>Cargando contenido...</p>
+    <h2>Cargando la aplicación...</h2>
+    <p>Estamos preparando tu experiencia submarina.</p>
   </main>
 
   <footer>
-    <p>&copy; 2025 EcoDive</p>
+    <small>Versión 1.0.08</small><br>
+    <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceWorker.js')
+        .then(reg => console.log('Service Worker registrado:', reg))
+        .catch(err => console.error('Fallo al registrar el Service Worker:', err));
+    }
+  </script>
 </body>
 </html>

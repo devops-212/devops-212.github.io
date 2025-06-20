@@ -1,21 +1,29 @@
 {
-  "name": "EcoDive",
+  "name": "EcoDive - Juego de Concientización Oceánica",
   "short_name": "EcoDive",
-  "description": "Juego de aventura submarina donde ayudas a limpiar los océanos",
+  "description": "Un juego progresivo donde ayudas a limpiar los océanos recolectando basura como un buzo ecológico.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#e0f7fa",
   "theme_color": "#006064",
+  "orientation": "portrait",
+  "scope": "./",
+  "id": "ecodive.app",
+  "lang": "es-MX",
+  "dir": "ltr",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "version": "1.0.08"
 }

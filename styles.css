@@ -131,3 +131,52 @@ body {
 body.fade-in {
   opacity: 1;
 }
+
+
+/* Mejora visual general y animaciones suaves */
+body {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+/* Botones mejorados */
+.nav-btn {
+  background-color: #ffffffdd;
+  color: var(--deep-blue);
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 16px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.nav-btn:hover {
+  background-color: var(--aqua-green);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Footer fijo y más claro */
+footer {
+  background-color: #e0f2f1;
+  color: #00363a;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Layout adaptable */
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
