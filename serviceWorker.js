@@ -6,7 +6,8 @@ const urlsToCache = [
   '/contact.html',
   '/styles.css',
   '/script.js',
-  '/Manifest.json'
+  '/Manifest.json',
+  '/app.js'
 ];
 
 self.addEventListener('install', function(event) {
