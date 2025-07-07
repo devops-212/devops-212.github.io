@@ -7,7 +7,10 @@ const urlsToCache = [
   '/styles.css',
   '/script.js',
   '/Manifest.json',
-  '/js/app.js'
+  '/js/app.js',
+  '/bg-ocean.jpg',
+  '/EcodiveIcon.png',
+  '/EcodiveIcon.ico'
 ];
 
 self.addEventListener('install', function(event) {
@@ -18,6 +21,22 @@ self.addEventListener('install', function(event) {
   );
 });
 
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames =>
+      Promise.all(
+        cacheNames.map(name => {
+          if (!cacheWhitelist.includes(name)) {
+            return caches.delete(name);
+          }
+        })
+      )
+    )
+  );
+});
+
+// Responder desde cache o hacer fetch
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {

@@ -25,18 +25,71 @@
 
 <body>
   <header>
-  <h1>EcoDive</h1>
-  <nav class="navbar">
-    <a href="index.html" class="nav-btn">&#8962; Inicio</a>
-    <a href="about.html" class="nav-btn">&#8505; Acerca</a>
-    <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
-  </nav>
-</header>
+    <h1>EcoDive</h1>
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn">&#8962; Inicio</a>
+      <a href="about.html" class="nav-btn">&#8505; Acerca</a>
+      <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
+    </nav>
+  </header>
 
   <main>
     <section>
       <p><strong>EcoDive</strong> es una iniciativa de concientización ambiental a través de un videojuego accesible para todos. Fue diseñado para promover la importancia del reciclaje y la limpieza de los océanos de manera divertida.</p>
     </section>
+  
+    <section>
+      <h2>Deja un comentario</h2>
+      <form id="comentario-form">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="correo">Correo:</label><br>
+        <input type="email" id="correo" name="correo" required><br>
+        <label for="comentario">Comentario:</label><br>
+        <textarea id="comentario" name="comentario" required></textarea><br>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <script type="module">
+      // Importa Firebase SDK
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      // Configura tu Firebase aquí
+      const firebaseConfig = {
+        apiKey: "TU_API_KEY",
+        authDomain: "TU_DOMINIO.firebaseapp.com",
+        projectId: "TU_PROJECT_ID",
+        storageBucket: "TU_BUCKET.appspot.com",
+        messagingSenderId: "TU_ID_MENSAJES",
+        appId: "TU_APP_ID"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      document.getElementById("comentario-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("nombre").value;
+        const correo = document.getElementById("correo").value;
+        const comentario = document.getElementById("comentario").value;
+
+        try {
+          await addDoc(collection(db, "comentarios"), {
+            nombre,
+            correo,
+            comentario,
+            timestamp: new Date()
+          });
+          alert("Comentario enviado con éxito.");
+          document.getElementById("comentario-form").reset();
+        } catch (error) {
+          console.error("Error al enviar comentario: ", error);
+          alert("Ocurrió un error. Intenta nuevamente.");
+        }
+      });
+    </script>
   </main>
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
