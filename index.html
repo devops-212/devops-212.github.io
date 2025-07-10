@@ -6,8 +6,8 @@
   <title>EcoDive - Limpieza Submarina</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="Manifest.json">
-  
 </head>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("fade-in");
@@ -28,14 +28,16 @@
 
 <body>
   <header>
-  <h1>EcoDive</h1>
-  <nav class="navbar">
-    <a href="index.html" class="nav-btn"><span>&#8962;</span> Inicio</a>
-    <a href="about.html" class="nav-btn"><span>&#8505;</span> Acerca</a>
-    <a href="contact.html" class="nav-btn"><span>&#9993;</span> Contacto</a>
-  </nav>
-</header>
-
+    <div class="header-left">
+      <img src="EcodiveIcon.png" alt="Logo EcoDive">
+      <h1>EcoDive</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn"><span>&#8962;</span> Inicio</a>
+      <a href="about.html" class="nav-btn"><span>&#8505;</span> Acerca</a>
+      <a href="contact.html" class="nav-btn"><span>&#9993;</span> Contacto</a>
+    </nav>
+  </header>
 
   <main>
     <section id="sobre">
@@ -55,16 +57,21 @@
       <h2>Contacto</h2>
       <p>Para más información, escribe a contacto@ecodive.com</p>
     </section>
+    <section class="news-section">
+      <div class="noticias-box">
+        <h2>Noticias Recientes</h2>
+        <p>EcoDive ha sido nominado como uno de los mejores juegos educativos del año.</p>
+        <p>Nuevos niveles estarán disponibles próximamente.</p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
 
+
   <script src="script.js"></script>
   <script src="js/app.js"></script>
-
-  
 </body>
-
 </html>

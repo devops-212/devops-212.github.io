@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Contacto - EcoDive</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="Manifest.json">
 </head>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("fade-in");
@@ -25,21 +27,85 @@
 
 <body>
   <header>
-  <h1>EcoDive</h1>
-  <nav class="navbar">
-    <a href="index.html" class="nav-btn">&#8962; Inicio</a>
-    <a href="about.html" class="nav-btn">&#8505; Acerca</a>
-    <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
-  </nav>
-</header>
+    <div class="header-left">
+      <img src="EcodiveIcon.png" alt="Logo EcoDive">
+      <h1>EcoDive</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn"><span>&#8962;</span> Inicio</a>
+      <a href="about.html" class="nav-btn"><span>&#8505;</span> Acerca</a>
+      <a href="contact.html" class="nav-btn"><span>&#9993;</span> Contacto</a>
+    </nav>
+  </header>
 
   <main>
     <section>
-      <p>¿Tienes preguntas o sugerencias? Envíanos un correo a <strong>contacto@ecodive.com</strong></p>
+      <p>¿Tienes preguntas o requieres de ayuda? Envíanos un correo a <strong>soporte@ecodive.com</strong> o utiliza el formulario de abajo</p>
+      <p>Teléfono: <strong>(+52) 811-123-4567</strong></p>
+      <p>Dirección: <strong>123 Calle del Mar, Océano Azul, 99999</strong></p>
     </section>
+
+    <section class="form-box">
+      <h2>Formulario de Soporte Técnico</h2>
+      <form id="support-form" class="support-form">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD25hUSj2CDxE18duRhcPtfOxXgvCVxflA",
+        authDomain: "ecodivemareaazul.firebaseapp.com",
+        databaseURL: "https://ecodivemareaazul-default-rtdb.firebaseio.com",
+        projectId: "ecodivemareaazul",
+        storageBucket: "ecodivemareaazul.firebasestorage.app",
+        messagingSenderId: "601786420819",
+        appId: "1:601786420819:web:79410f1e1159fef2fd00a6"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      document.getElementById("support-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById("name").value;
+        const correo = document.getElementById("email").value;
+        const comentario = document.getElementById("message").value;
+
+        try {
+          await addDoc(collection(db, "Soporte"), {
+            nombre,
+            correo,
+            comentario,
+            timestamp: new Date()
+          });
+          alert("Mensaje enviado con éxito.");
+          document.getElementById("support-form").reset();
+        } catch (error) {
+          console.error("Error al enviar tu mensaje: ", error);
+          alert("Ocurrió un error. Intenta nuevamente.");
+        }
+      });
+    </script>
   </main>
+
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
+
+  <script src="script.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
