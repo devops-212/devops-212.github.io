@@ -28,15 +28,32 @@ function submitForm(e) {
   const msgContent = getElementVal("msgContent");
 
   // Guardar en la base de datos
-  saveMessages(name, emailid, supportType, msgContent);
+  const newContactForm = contactFormDB.push();
+  newContactForm.set({
+    name: name,
+    email: emailid,
+    supportType: supportType,
+    message: msgContent,
+  })
+  .then(() => {
+    showAlert("Tu mensaje ha sido enviado", "success");
+    document.getElementById("supportForm").reset();
+  })
+  .catch((error) => {
+    console.error("Error al enviar datos a Firebase:", error.message);
+    showAlert("Error al enviar el mensaje. Intenta más tarde.", "error");
+  });
+}
 
-  // Mostrar alerta con fade-in
+// Mostrar alerta animada
+function showAlert(message, type) {
   const alertBox = document.querySelector(".alert");
+  alertBox.textContent = message;
+  alertBox.style.background = type === "success" ? "#00c853" : "#d32f2f";
   alertBox.classList.remove("hide");
   alertBox.style.display = "block";
   alertBox.classList.add("show");
 
-  // Ocultar con fade-out
   setTimeout(() => {
     alertBox.classList.remove("show");
     alertBox.classList.add("hide");
@@ -44,21 +61,10 @@ function submitForm(e) {
       alertBox.style.display = "none";
     }, 400);
   }, 3000);
-
-  // Resetear formulario
-  document.getElementById("supportForm").reset();
 }
 
-const saveMessages = (name, emailid, supportType, msgContent) => {
-  const newContactForm = contactFormDB.push();
-  newContactForm.set({
-    name: name,
-    email: emailid,
-    supportType: supportType,
-    message: msgContent,
-  });
-};
-
+// Utilidad para obtener valores del formulario
 const getElementVal = (id) => {
   return document.getElementById(id).value;
 };
+

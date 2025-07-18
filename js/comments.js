@@ -26,16 +26,32 @@ function submitForm(e) {
   const emailid = getElementVal("emailid");
   const msgContent = getElementVal("msgContent");
 
-  // Guardar en la base de datos
-  saveMessages(name, emailid, msgContent);
+  // Guardar datos
+  const newComment = contactFormDB.push();
+  newComment.set({
+    name: name,
+    emailid: emailid,
+    msgContent: msgContent,
+  })
+  .then(() => {
+    showAlert("Tu comentario ha sido enviado correctamente", "success");
+    document.getElementById("commentsForm").reset();
+  })
+  .catch((error) => {
+    console.error("Error al guardar comentario:", error.message);
+    showAlert("Error al enviar el comentario. Intenta más tarde.", "error");
+  });
+}
 
-  // Mostrar alerta con fade-in
+// Mostrar alerta animada
+function showAlert(message, type) {
   const alertBox = document.querySelector(".alert");
+  alertBox.textContent = message;
+  alertBox.style.background = type === "success" ? "#00c853" : "#d32f2f";
   alertBox.classList.remove("hide");
   alertBox.style.display = "block";
   alertBox.classList.add("show");
 
-  // Ocultar con fade-out
   setTimeout(() => {
     alertBox.classList.remove("show");
     alertBox.classList.add("hide");
@@ -43,20 +59,10 @@ function submitForm(e) {
       alertBox.style.display = "none";
     }, 400);
   }, 3000);
-
-  // Resetear formulario
-  document.getElementById("commentsForm").reset();
 }
 
-const saveMessages = (name, emailid, msgContent) => {
-  const newContactForm = contactFormDB.push();
-  newContactForm.set({
-    name: name,
-    emailid: emailid,
-    msgContent: msgContent,
-  });
-};
-
+// Obtener valor de campos
 const getElementVal = (id) => {
   return document.getElementById(id).value;
 };
+

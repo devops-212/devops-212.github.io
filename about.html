@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Acerca de EcoDive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="Manifest.json">
 </head>
@@ -47,25 +48,27 @@
     <section>
       <div class="comentario-box">
         <h3>Deja un comentario</h3>
-          <form id="commentsForm">
-              <div class="alert" style="display:none;">Tu mensaje ha sido enviado</div>
+        <form id="commentsForm">
+          <div class="inputBox">
+            <div class="alert" style="display: none;">Tu mensaje ha sido enviado</div>
+          </div>
 
-              <div class="inputBox">
-                  <input type="text" id="name" placeholder="Nombre...." required />
-              </div>
+          <div class="inputBox">
+            <input type="text" id="name" placeholder="Nombre...." required />
+          </div>
 
-              <div class="inputBox">
-                  <input type="email" id="emailid" placeholder="Correo....." required />
-              </div>
+          <div class="inputBox">
+            <input type="email" id="emailid" placeholder="Correo....." required />
+          </div>
 
-              <div class="inputBox">
-                  <textarea id="msgContent" cols="30" rows="10" placeholder="Tus comentarios" required></textarea>
-              </div>
+          <div class="inputBox">
+            <textarea id="msgContent" cols="30" rows="10" placeholder="Tus comentarios" required></textarea>
+          </div>
 
-              <div class="inputBox">
-                  <button type="submit">Submit</button>
-              </div>
-          </form>
+          <div class="inputBox">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -79,6 +82,5 @@
 
   <script src="js/comments.js"></script>
   <script src="js/app.js"></script>
-
 </body>
 </html>
