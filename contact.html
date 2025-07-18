@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto - EcoDive</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="Manifest.json">
@@ -31,10 +32,12 @@
       <img src="EcodiveIcon.png" alt="Logo EcoDive">
       <h1>EcoDive</h1>
     </div>
+
+    <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
     <nav class="navbar">
-      <a href="index.html" class="nav-btn"><span>&#8962;</span> Inicio</a>
-      <a href="about.html" class="nav-btn"><span>&#8505;</span> Acerca</a>
-      <a href="contact.html" class="nav-btn"><span>&#9993;</span> Contacto</a>
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="about.html" class="nav-btn">Acerca</a>
+      <a href="contact.html" class="nav-btn">Contacto</a>
     </nav>
   </header>
 
@@ -84,6 +87,13 @@
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('active');
+    }
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
