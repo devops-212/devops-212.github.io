@@ -47,65 +47,45 @@
 
     <section class="form-box">
       <h2>Formulario de Soporte Técnico</h2>
-      <form id="support-form" class="support-form">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
+        <form action="" id="supportForm">
+            <div class="alert" style="display:none;">Tu mensaje ha sido enviado</div>
 
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+            <div class="inputBox">
+                <input type="text" id="name" placeholder="Nombre...." />
+            </div>
 
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="inputBox">
+                <input type="email" id="emailid" placeholder="Correo....." />
+            </div>
 
-        <button type="submit">Enviar</button>
-      </form>
+            <div class="inputBox">
+              <select id="supportType" required>
+                <option value="">Selecciona el tipo de soporte</option>
+                <option value="problema_tecnico">Problema técnico</option>
+                <option value="sugerencia">Sugerencia</option>
+                <option value="error_funcionalidad">Error de funcionalidad</option>
+                <option value="soporte_general">Soporte general</option>
+              </select>
+            </div>
+
+            <div class="inputBox">
+                <textarea id="msgContent" cols="30" rows="10" placeholder="Detalles de tu consulta"></textarea>
+            </div>
+
+            <div class="inputBox">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </section>
-
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyD25hUSj2CDxE18duRhcPtfOxXgvCVxflA",
-        authDomain: "ecodivemareaazul.firebaseapp.com",
-        databaseURL: "https://ecodivemareaazul-default-rtdb.firebaseio.com",
-        projectId: "ecodivemareaazul",
-        storageBucket: "ecodivemareaazul.firebasestorage.app",
-        messagingSenderId: "601786420819",
-        appId: "1:601786420819:web:79410f1e1159fef2fd00a6"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      document.getElementById("support-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const nombre = document.getElementById("name").value;
-        const correo = document.getElementById("email").value;
-        const comentario = document.getElementById("message").value;
-
-        try {
-          await addDoc(collection(db, "Soporte"), {
-            nombre,
-            correo,
-            comentario,
-            timestamp: new Date()
-          });
-          alert("Mensaje enviado con éxito.");
-          document.getElementById("support-form").reset();
-        } catch (error) {
-          console.error("Error al enviar tu mensaje: ", error);
-          alert("Ocurrió un error. Intenta nuevamente.");
-        }
-      });
-    </script>
-  </main>
 
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script src="js/support.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -47,70 +47,38 @@
     <section>
       <div class="comentario-box">
         <h3>Deja un comentario</h3>
-        <form id="comentario-form">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
+          <form id="commentsForm">
+              <div class="alert" style="display:none;">Tu mensaje ha sido enviado</div>
 
-          <label for="correo">Correo:</label>
-          <input type="email" id="correo" name="correo" required>
+              <div class="inputBox">
+                  <input type="text" id="name" placeholder="Nombre...." required />
+              </div>
 
-          <label for="comentario">Comentario:</label>
-          <textarea id="comentario" name="comentario" required></textarea>
+              <div class="inputBox">
+                  <input type="email" id="emailid" placeholder="Correo....." required />
+              </div>
 
-          <button type="submit">Enviar</button>
-        </form>
+              <div class="inputBox">
+                  <textarea id="msgContent" cols="30" rows="10" placeholder="Tus comentarios" required></textarea>
+              </div>
+
+              <div class="inputBox">
+                  <button type="submit">Submit</button>
+              </div>
+          </form>
       </div>
     </section>
-
-    <script type="module">
-
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-      
-      const firebaseConfig = {
-        apiKey: "AIzaSyD25hUSj2CDxE18duRhcPtfOxXgvCVxflA",
-        authDomain: "ecodivemareaazul.firebaseapp.com",
-        databaseURL: "https://ecodivemareaazul-default-rtdb.firebaseio.com",
-        projectId: "ecodivemareaazul",
-       storageBucket: "ecodivemareaazul.firebasestorage.app",
-       messagingSenderId: "601786420819",
-       appId: "1:601786420819:web:79410f1e1159fef2fd00a6"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      document.getElementById("comentario-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const nombre = document.getElementById("nombre").value;
-        const correo = document.getElementById("correo").value;
-        const comentario = document.getElementById("comentario").value;
-
-        try {
-          await addDoc(collection(db, "comentarios"), {
-            nombre,
-            correo,
-            comentario,
-            timestamp: new Date()
-          });
-          alert("Comentario enviado con éxito.");
-          document.getElementById("comentario-form").reset();
-        } catch (error) {
-          console.error("Error al enviar comentario: ", error);
-          alert("Ocurrió un error. Intenta nuevamente.");
-        }
-      });
-    </script>
   </main>
 
   <footer>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script src="js/comments.js"></script>
   <script src="js/app.js"></script>
+
 </body>
 </html>
-
-
