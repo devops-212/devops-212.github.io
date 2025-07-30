@@ -6,29 +6,6 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="Manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.body.classList.add("fade-in");
-
-      const links = document.querySelectorAll("a.nav-btn");
-      links.forEach(link => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const href = this.getAttribute("href");
-          document.body.classList.remove("fade-in");
-          setTimeout(() => {
-            window.location.href = href;
-          }, 300);
-        });
-      });
-    });
-
-    function toggleMenu() {
-      const navbar = document.querySelector(".navbar");
-      navbar.classList.toggle("active");
-    }
-  </script>
 </head>
 
 <body>
@@ -89,5 +66,6 @@
 
   <script src="script.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

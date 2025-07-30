@@ -1,4 +1,3 @@
-// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD25hUSj2CDxE18duRhcPtfOxXgvCVxflA",
   authDomain: "ecodivemareaazul.firebaseapp.com",
@@ -9,25 +8,20 @@ const firebaseConfig = {
   appId: "1:601786420819:web:69242bae40081f45fd00a6"
 };
 
-// Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Referencia a la base de datos
 const contactFormDB = firebase.database().ref("Soporte PWA");
 
-// Evento de envío del formulario
 document.getElementById("supportForm").addEventListener("submit", submitForm);
 
 function submitForm(e) {
   e.preventDefault();
 
-  // Obtener valores
   const name = getElementVal("name");
   const emailid = getElementVal("emailid");
   const supportType = getElementVal("supportType");
   const msgContent = getElementVal("msgContent");
 
-  // Guardar en la base de datos
   const newContactForm = contactFormDB.push();
   newContactForm.set({
     name: name,
@@ -45,7 +39,6 @@ function submitForm(e) {
   });
 }
 
-// Mostrar alerta animada
 function showAlert(message, type) {
   const alertBox = document.querySelector(".alert");
   alertBox.textContent = message;
@@ -63,8 +56,6 @@ function showAlert(message, type) {
   }, 3000);
 }
 
-// Utilidad para obtener valores del formulario
 const getElementVal = (id) => {
   return document.getElementById(id).value;
 };
-

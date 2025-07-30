@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#006064">
-  <title>EcoDive - AppShell</title>
+  <meta charset="UTF-8">
+  <title>EcoDive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="Manifest.json">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="fade-in">
+
+<body>
   <header>
-    <h1>EcoDive</h1>
+    <div class="header-left">
+      <img src="EcodiveIcon.png" alt="Logo EcoDive">
+      <h1>EcoDive</h1>
+    </div>
+
+    <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
     <nav class="navbar">
-      <a href="index.html" class="nav-btn">&#8962; Inicio</a>
-      <a href="about.html" class="nav-btn">&#8505; Acerca</a>
-      <a href="contact.html" class="nav-btn">&#9993; Contacto</a>
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="about.html" class="nav-btn">Acerca</a>
+      <a href="contact.html" class="nav-btn">Contacto</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Cargando la aplicación...</h2>
-    <p>Estamos preparando tu experiencia submarina.</p>
+  <main id="content">
+    <p class="loader">Cargando contenido...</p>
   </main>
 
   <footer>
-    <small>Versión 1.0.08</small><br>
     <p>&copy; 2025 EcoDive - Protejamos nuestros océanos</p>
   </footer>
 
-  <script src="script.js"></script>
   <script>
+    function toggleMenu() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('active');
+    }
+
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('serviceWorker.js')
-        .then(reg => console.log('Service Worker registrado:', reg))
-        .catch(err => console.error('Fallo al registrar el Service Worker:', err));
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceWorker.js')
+          .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+          .catch(err => console.error('❌ Error al registrar el SW:', err));
+      });
     }
   </script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script src="js/app.js" type="module"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
