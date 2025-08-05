@@ -32,37 +32,27 @@
 
     <section class="form-box">
       <h2>Formulario de Soporte Técnico</h2>
-        <form action="" id="supportForm">
-            <div class="inputBox">
-              <div class="alert" style="display: none;">Tu mensaje ha sido enviado</div>
-            </div>
+      <form action="" id="supportForm">
+        <div class="inputBox">
+          <div class="alert" style="display: none;">Tu mensaje ha sido enviado</div>
+        </div>
 
-            <div class="inputBox">
-                <input type="text" id="name" placeholder="Nombre...." />
-            </div>
+        <div class="inputBox">
+          <input type="text" id="name" placeholder="Nombre..." required />
+        </div>
 
-            <div class="inputBox">
-                <input type="email" id="emailid" placeholder="Correo....." />
-            </div>
+        <div class="inputBox">
+          <input type="tel" id="phone" placeholder="Número..." required pattern="[0-9]{10}" />
+        </div>
 
-            <div class="inputBox">
-              <select id="supportType" required>
-                <option value="">Selecciona el tipo de soporte</option>
-                <option value="problema_tecnico">Problema técnico</option>
-                <option value="sugerencia">Sugerencia</option>
-                <option value="error_funcionalidad">Error de funcionalidad</option>
-                <option value="soporte_general">Soporte general</option>
-              </select>
-            </div>
+        <div class="inputBox">
+          <textarea id="msgContent" cols="30" rows="10" placeholder="Detalles de tu consulta" required></textarea>
+        </div>
 
-            <div class="inputBox">
-                <textarea id="msgContent" cols="30" rows="10" placeholder="Detalles de tu consulta"></textarea>
-            </div>
-
-            <div class="inputBox">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+        <div class="inputBox">
+          <button type="submit">Enviar Consulta</button>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -77,9 +67,11 @@
     }
   </script>
 
+  <!-- Firebase v8 -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+  <!-- Lógica del formulario -->
   <script src="js/support.js"></script>
   <script src="js/app.js"></script>
   <script src="js/script.js"></script>
