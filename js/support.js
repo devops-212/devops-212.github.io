@@ -10,7 +10,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const contactFormDB = firebase.database().ref("Soporte PWA");
+const contactFormDB = firebase.database().ref("Productos");
 
 document.getElementById("supportForm").addEventListener("submit", submitForm);
 
