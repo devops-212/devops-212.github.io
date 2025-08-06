@@ -200,6 +200,7 @@ form label {
   opacity: 0;
 }
 
+.comentario-box,
 .form-box {
   background-color: rgba(0, 148, 153, 0.3);
   padding: 2rem;
@@ -213,6 +214,7 @@ form label {
   text-align: center;
 }
 
+.comentario-box form,
 .form-box form {
   width: 100%;
   display: flex;
