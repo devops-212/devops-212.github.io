@@ -10,8 +10,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Referencia al nodo en Firebase
-const contactFormDB = firebase.database().ref("Productos");
+const contactFormDB = firebase.database().ref("Soporte PWA");
 
 document.getElementById("supportForm").addEventListener("submit", submitForm);
 
@@ -19,16 +18,14 @@ function submitForm(e) {
   e.preventDefault();
 
   const name = getElementVal("name");
-  const phone = getElementVal("phone");
+  const emailid = getElementVal("emailid");
   const msgContent = getElementVal("msgContent");
 
-  // Guardar datos
   const newContactForm = contactFormDB.push();
   newContactForm.set({
-    nombre: name,
-    telefono: phone,
-    mensaje: msgContent,
-    fecha: new Date().toISOString()
+    name: name,
+    email: emailid,
+    message: msgContent,
   })
   .then(() => {
     showAlert("Tu mensaje ha sido enviado", "success");
